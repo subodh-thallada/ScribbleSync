@@ -43,6 +43,25 @@ body {
         8px 8px 0px rgba(0, 0, 0, 0.05); /* Third layer */;
 }
 
+.canvas_container {
+    position: relative;
+    width: 400px; /* Width of the canvas */
+    height: 400px; /* Height of the canvas */
+    margin-bottom: 20px;
+}
+
+@keyframes flipNote {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-150deg);
+    }
+    100% {
+        transform: rotateX(-360deg); /* Equivalent to 0deg */
+    }
+}
+
 canvas {
     background-color: #fff8c6; /* Pale yellow background */
     border: 1px solid #ddd; /* Light border */
@@ -57,6 +76,11 @@ canvas {
     width: 400px; /* Adjusted width */
     height: 400px; /* Adjusted height */
     margin-top: 15px; /* Spacing from top */
+    transform-origin: top;
+}
+
+.canvas-flip {
+    animation: flipNote 1s forwards; /* Apply the animation only when this class is added */
 }
 
 
@@ -119,11 +143,11 @@ button:hover{
 
 #textInput {
     position: absolute;
-    top: 51%; /* Adjust as needed */
-    left: 50%; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%);
-    width: 25%; /* Make the text area take up more of the canvas */
-    height: 40%; /* Adjust height as needed */
+    width: 80%; /* Adjust to cover a desired portion of the canvas */
+    height: 80%; /* Adjust height as needed */
     border: 2px solid #643B9F;
     border-radius: 5px;
     padding: 10px;

@@ -144,7 +144,9 @@ saveBtn.addEventListener("click", () => {
 
         sendDataToFlask({ type: 'text', data: sketch_name });
     }
+    canvas.classList.add('canvas-flip');
     clearBtn.click();
+
 });
 
 function sendDataToFlask(text) {

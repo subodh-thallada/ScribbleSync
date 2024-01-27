@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css">
-    <title>DigiPad</title>
+    <title>ScribbleSync</title>
 </head>
 <body>
     
@@ -20,8 +20,11 @@
             <button class="clear">CLEAR</button>
             <button class="save">SAVE</button>
         </div>
-        <canvas id="canvas"></canvas>
-        <textarea id="textInput" placeholder="Type here..." style="display: none;"></textarea>
+        
+        <div class="canvas_container">
+            <canvas id="canvas"></canvas>
+            <textarea id="textInput" placeholder="Type here..." style="display: none;"></textarea>
+        </div>
 
         <div class="image-upload">
             <label for="imageLoader" id="fileInputLabel">Choose a file</label>
