@@ -75,14 +75,29 @@ clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-// Save button logic
+
 let saveBtn = document.querySelector(".save");
 saveBtn.addEventListener("click", () => {
-    let data = canvas.toDataURL("image/png");
+
+    let tempCanvas = document.createElement('canvas');
+    tempCanvas.width = canvas.width;
+    tempCanvas.height = canvas.height;
+
+    let tempCtx = tempCanvas.getContext('2d');
+    tempCtx.fillStyle = '#FFFFFF'; // Set fill color to white
+    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height); // Fill the canvas with white
+
+    // Draw the current canvas content on top of the white background
+    tempCtx.drawImage(canvas, 0, 0);
+    // Save the image
+    let data = tempCanvas.toDataURL("image/png");
     let a = document.createElement("a");
     a.href = data;
     a.download = "sketch.png";
-    //TODO save png with white background
     a.click();
-})
+
+    // Clean up: remove the temporary canvas
+    tempCanvas.remove();
+});
+
 
