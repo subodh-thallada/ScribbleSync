@@ -101,6 +101,8 @@ function drawTextOnCanvas(text) {
 let clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    textInput.value = '';
+    textInput.style.display = 'none';
 });
 
 var sketch_counter = 0;
@@ -141,8 +143,8 @@ saveBtn.addEventListener("click", () => {
         sketch_counter += 1;
 
         sendDataToFlask({ type: 'text', data: sketch_name });
-
     }
+    clearBtn.click();
 });
 
 function sendDataToFlask(text) {

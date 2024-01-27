@@ -22,10 +22,16 @@
         </div>
         <canvas id="canvas"></canvas>
         <textarea id="textInput" placeholder="Type here..." style="display: none;"></textarea>
+
+        <div class="image-upload">
+            <label for="imageLoader" id="fileInputLabel">Choose a file</label>
+            <input type="file" id="imageLoader" name="imageLoader" accept="image/*" style="display: none;" />
+        </div>
     </div>
 
-    <div class="image-upload">
-        <input type="file" id="imageLoader" name="imageLoader" accept="image/*" />
+    <div class="result_container">
+        <div class="events">Events</div>
+        <div class="notes">Notes</div>
     </div>
     <script src="/static/main.js"></script>
 </body>
