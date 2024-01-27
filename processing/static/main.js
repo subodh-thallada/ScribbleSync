@@ -82,6 +82,7 @@ saveBtn.addEventListener("click", () => {
     let a = document.createElement("a");
     a.href = data;
     a.download = "sketch.png";
+    //TODO save png with white background
     a.click();
 })
 
