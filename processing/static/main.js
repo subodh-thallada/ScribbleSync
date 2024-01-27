@@ -69,6 +69,34 @@ clrs.forEach(clr => {
     });
 });
 
+// Text input and type button elements
+const textInput = document.getElementById('textInput');
+const typeBtn = document.querySelector('.type');
+
+let typingMode = false;
+
+// Event listener for type button
+typeBtn.addEventListener('click', () => {
+    typingMode = !typingMode;
+    if (typingMode) {
+        textInput.style.display = 'block'; // Show text input
+        textInput.focus(); // Automatically focus on the input
+    } else {
+        textInput.style.display = 'none'; // Hide text input
+        drawTextOnCanvas(textInput.value); // Draw text on canvas
+        textInput.value = ''; // Clear the text input
+    }
+});
+
+// Function to draw text on canvas
+function drawTextOnCanvas(text) {
+    if (!text) return;
+
+    ctx.font = '16px Arial'; // Adjust font as needed
+    ctx.fillStyle = '#000'; // Adjust text color as needed
+    ctx.fillText(text, 100, 100); // Adjust text position as needed
+}
+
 // Clear button logic
 let clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", () => {
@@ -79,25 +107,29 @@ clearBtn.addEventListener("click", () => {
 let saveBtn = document.querySelector(".save");
 saveBtn.addEventListener("click", () => {
 
-    let tempCanvas = document.createElement('canvas');
-    tempCanvas.width = canvas.width;
-    tempCanvas.height = canvas.height;
+    if (textInput.style.display === 'block') {
+        console.log(textInput.value);
+    } else {
 
-    let tempCtx = tempCanvas.getContext('2d');
-    tempCtx.fillStyle = '#FFFFFF'; // Set fill color to white
-    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height); // Fill the canvas with white
+        let tempCanvas = document.createElement('canvas');
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
 
-    // Draw the current canvas content on top of the white background
-    tempCtx.drawImage(canvas, 0, 0);
-    // Save the image
-    let data = tempCanvas.toDataURL("image/png");
-    let a = document.createElement("a");
-    a.href = data;
-    a.download = "sketch.png";
-    a.click();
+        let tempCtx = tempCanvas.getContext('2d');
+        tempCtx.fillStyle = '#FFFFFF'; // Set fill color to white
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height); // Fill the canvas with white
 
-    // Clean up: remove the temporary canvas
-    tempCanvas.remove();
+        // Draw the current canvas content on top of the white background
+        tempCtx.drawImage(canvas, 0, 0);
+        // Save the image
+        let data = tempCanvas.toDataURL("image/png");
+        let a = document.createElement("a");
+        a.href = data;
+        a.download = "sketch.png";
+        a.click();
+
+        // Clean up: remove the temporary canvas
+        tempCanvas.remove();
+
+    }
 });
-
-
