@@ -103,12 +103,14 @@ clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+var sketch_counter = 0;
 
 let saveBtn = document.querySelector(".save");
 saveBtn.addEventListener("click", () => {
 
-    if (textInput.style.display === 'block') {
+    if (textInput.style.display === 'block' && textInput.value.trim() !== '') {
         console.log(textInput.value);
+        sendDataToFlask({ type: 'text', data: textInput.value });
     } else {
 
         let tempCanvas = document.createElement('canvas');
@@ -127,9 +129,30 @@ saveBtn.addEventListener("click", () => {
         a.href = data;
         a.download = "sketch.png";
         a.click();
-
         // Clean up: remove the temporary canvas
         tempCanvas.remove();
 
+        let sketch_name = "";
+        if (sketch_counter == 0) {
+            sketch_name = "sketch.png";
+        } else {
+            sketch_name = "sketch " + "(" + sketch_counter + ").png";
+        }
+        sketch_counter += 1;
+
+        sendDataToFlask({ type: 'text', data: sketch_name });
+
     }
 });
+
+function sendDataToFlask(text) {
+    return fetch('/save_data', {
+        method: 'POST',
+        body: JSON.stringify({ text: text }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
