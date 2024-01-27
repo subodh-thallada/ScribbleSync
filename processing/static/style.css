@@ -1,34 +1,45 @@
-*{
-    margin: 0;
-    padding: 0;
-}
 body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers horizontally in a flex column */
-    justify-content: center; /* Centers vertically if you want */
     height: 100vh; /* Takes the full viewport height */
-    background-color: #f4f4f4;
+    width: 100vw; /* Takes the full viewport width */
+    background-color: #e4dae2;
     margin: 0;
     padding: 0;
 }
 
+.draw_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .nav{
-    width: 310px;
+    width: 390px;
     height: 50px;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    opacity: .3;
-    transition: opacity .5s;
+    justify-content: center;
+    margin: 3px;
+    border-radius: 5px;
+    padding: 3px;
+    border-style: solid;
+    border-width: 2px;
+    border: #fff8c6;
+    background-color: #a3c4f3;
+    box-shadow: 
+        5px 5px 15px rgba(0, 0, 0, 0.2), /* Main shadow for depth */
+        -1px -1px 0px #a1c8e9, /* Top-left light edge */
 }
+
 .nav:hover{
-    opacity: 1;
+    box-shadow: 
+        6px 6px 0px rgba(0, 0, 0, 0.1), /* Bottom-right dark edge */
+        7px 7px 0px rgba(0, 0, 0, 0.05), /* Second layer */
+        8px 8px 0px rgba(0, 0, 0, 0.05); /* Third layer */;
 }
 
 canvas {
@@ -41,10 +52,10 @@ canvas {
         7px 7px 0px rgba(0, 0, 0, 0.05), /* Second layer */
         8px 8px 0px rgba(0, 0, 0, 0.05); /* Third layer */
     /* transform: rotate(2deg); Slight rotation */
-    border-radius: 5px; /* Slightly rounded corners */
+    border-radius: 7px; /* Slightly rounded corners */
     width: 400px; /* Adjusted width */
     height: 400px; /* Adjusted height */
-    margin-top: 20px; /* Spacing from top */
+    margin-top: 15px; /* Spacing from top */
 }
 
 
@@ -56,6 +67,7 @@ canvas {
     border: 3px solid rgb(214, 214, 214);
     transition: transform .5s;
 }
+
 .clr:hover{
     transform: scale(1.2);
 }
@@ -78,12 +90,30 @@ button{
     outline: none;
     padding: .6em 1em;
     border-radius: 3px;
-    background-color: #03bb56;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 3px;
+    margin-left: 3px;
     color: #fff;
 }
-.save{
-    background-color: #0f65d4;
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
+
+.save{
+    background-color: #bcdfc9;
+}
+
+.type{
+    background-color: #f6c2d9;
+}
+
+.clear{
+    background-color: #f9e4b7;
+}
+
 
 #textInput {
     position: absolute;

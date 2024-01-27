@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let prevX = null;
 let prevY = null;
-ctx.lineWidth = 5;
+ctx.lineWidth = 6;
 
 let draw = false;
 
