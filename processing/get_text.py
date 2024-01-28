@@ -22,7 +22,9 @@ def save_data():
         text_data = data.get('text')
         if text_data:
             print("This is was returned:", text_data['data'])
-            return jsonify({"message": "Text received successfully!"})
+            return jsonify({"events":["Meeting 1", "Meeting 2"], 
+                "links": ["https://calendar.google.com/calendar/u/0/r", "https://www.google.com"], 
+                "notes": ["This is a note", "another note"]})
         else:
             return jsonify({"error": "No text provided"}), 400
     else:

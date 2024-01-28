@@ -161,10 +161,37 @@ function sendDataToFlask(text) {
     .then(response => response.json())
     .then((data)=> {
         console.log(data);
-        console.log(data.message);
+
+        // Clear existing content
+        document.querySelector('.events').innerHTML = 'Events';
+        document.querySelector('.notes').innerHTML = 'Notes';
+
+        // Process events
+        if (data.events && data.links && data.events.length === data.links.length) {
+            data.events.forEach((event, index) => {
+                const eventElement = document.createElement('a');
+                eventElement.href = data.links[index];
+                eventElement.target = '_blank';
+                eventElement.classList.add('ticket');
+                eventElement.textContent = event;
+                document.querySelector('.events').appendChild(eventElement);
+            });
+        }
+
+        // Process notes
+        if (data.notes) {
+            data.notes.forEach(note => {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('ticket');
+                noteElement.textContent = note;
+                document.querySelector('.notes').appendChild(noteElement);
+            });
+        }
+
         return data;
     })
     .catch((error) => {
         console.error('Error:', error);
     });
 }
+

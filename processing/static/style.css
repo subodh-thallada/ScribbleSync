@@ -220,7 +220,7 @@ button:hover{
     width: 350px; /* Set width of squares */
     height: 275px; /* Set height of squares */
     display: flex;
-    justify-content: center; /* Center content horizontally */
+    flex-direction: column;
     align-items: center; /* Center content vertically */
     font-size: 20px; /* Adjust font size as needed */
     color: white; /* Text color */
@@ -242,9 +242,26 @@ button:hover{
 }
 
 .notes {
-    background-color: #a3c4f3; /* Soft blue background */
+    background-color: #a3c4f3;
 }
 
 .events {
-    background-color: #f6c2d9; /* Muted green background */
+    background-color: #f6c2d9;
+}
+
+.ticket {
+    display: block;
+    margin: 2.5px;
+    padding: 5px;
+    background-color: #bcdfc9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Remove underline from links */
+    font-size: 14px;
+    color: white;
+}
+
+.ticket:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
 }
