@@ -11,6 +11,38 @@ body {
     padding-right: 20px;
 }
 
+#plant{
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    top: 130px;
+    left: 60px;
+}
+
+#pencil{
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    top: 130px;
+    left: 80%;
+}
+
+#notebook{
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    top: 250px;
+    left: 80px;
+}
+
+#ruler{
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    top: 170px;
+    left: 80%;
+}
+
 .draw_container{
     display: flex;
     flex-direction: column;

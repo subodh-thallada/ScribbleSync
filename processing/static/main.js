@@ -112,7 +112,10 @@ saveBtn.addEventListener("click", () => {
 
     if (textInput.style.display === 'block' && textInput.value.trim() !== '') {
         console.log(textInput.value);
-        sendDataToFlask({ type: 'text', data: textInput.value });
+        let res_test = 1;
+        console.log(sendDataToFlask({ type: 'text', data: textInput.value }))
+
+        console.log(res_test);
     } else {
 
         let tempCanvas = document.createElement('canvas');
@@ -156,6 +159,11 @@ function sendDataToFlask(text) {
         headers: { 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
+    .then((data)=> {
+        console.log(data);
+        console.log(data.message);
+        return data;
+    })
     .catch((error) => {
         console.error('Error:', error);
     });

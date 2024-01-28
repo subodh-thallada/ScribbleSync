@@ -22,7 +22,6 @@ def save_data():
         text_data = data.get('text')
         if text_data:
             print("This is was returned:", text_data['data'])
-
             return jsonify({"message": "Text received successfully!"})
         else:
             return jsonify({"error": "No text provided"}), 400
@@ -30,4 +29,4 @@ def save_data():
         return jsonify({"error": "Request must be JSON"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
