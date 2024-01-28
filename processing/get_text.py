@@ -24,9 +24,11 @@ def save_data():
         text_data = data.get('text')
         if text_data:
             print("This is was returned:", text_data['data'])
-            return jsonify({"events":["Meeting 1", "Meeting 2"], 
-                "links": ["https://calendar.google.com/calendar/u/0/r", "https://www.google.com"], 
-                "notes": ["This is a note", "another note"]})
+            picture_path = os.path.join("C:\\Users\\miran\\Downloads", text_data['data'])
+            # return jsonify({"events":["Meeting 1", "Meeting 2"], 
+            #     "links": ["https://calendar.google.com/calendar/u/0/r", "https://www.google.com"], 
+            #     "notes": ["This is a note", "another note"]})
+            return jsonify({"message": "Text saved successfully"}), 200
         else:
             return jsonify({"error": "No text provided"}), 400
     else:
@@ -38,7 +40,7 @@ def process_data():
     try:
         # Call your independent processing function
         result = process_data_func()
-        return jsonify({"message": "Processing successful", "result":f"{result}"})
+        return jsonify(result)
     except Exception as e:
         print(e)
         return jsonify({"error": "Error occurred during processing"}), 500
@@ -71,11 +73,12 @@ def process_data_func():
                 time_list = ["2024-01-27T15:00:00", "2024-01-28T14:00:00"]
                 links = make_event(events, time_list)
                 print('google calender clear')
-                output = {'Meetings':events, "Time":time_list, "Link":links}
+                output = {'events':events, "notes":json_content["notes"], "links":links}
+                return output
             except Exception as e:
                 print(e)
                 return jsonify({"error": "Error occurred while processing image"}), 500
-            return output
+            
     # PDF
     elif picture_path.endswith('.pdf'):
         pdf_path = picture_path
@@ -95,15 +98,23 @@ def process_data_func():
     # Simply text
     else:
         text = picture_path
+        print("printing text variable that is set to picture path:", text)
         try:
             json_content = json_create(text)
             events, time_list = grab_time(json_content)
             links = make_event(events, time_list)
-            output = {'Meetings':events, "Time":time_list, "Link":links}
+            output = {'events':events, "notes":json_content["notes"], "links":links}
+            # output = {"events":["Meeting 1", "Meeting 2"], 
+            #     "links": ["https://calendar.google.com/calendar/u/0/r", "https://www.google.com"], 
+            #     "notes": ["This is a note", "another note"]}
+            print(output)
+            return output
+        
         except Exception as e:
+            print("error while processing text")
             print(e)
             return jsonify({"error": "Error occurred while processing image"}), 500
-        return output
+        # return output
 
 if __name__ == '__main__':
     app.run(debug=True)

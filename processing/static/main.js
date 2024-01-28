@@ -113,8 +113,11 @@ saveBtn.addEventListener("click", () => {
     if (textInput.style.display === 'block' && textInput.value.trim() !== '') {
         console.log(textInput.value);
         let res_test = 1;
-        console.log(sendDataToFlask({ type: 'text', data: textInput.value }))
-
+        sendDataToFlask({ type: 'text', data: textInput.value })
+        .then(() => {
+            return processDataInFlask({ type: 'text', data: textInput.value });
+            }
+        );
         console.log(res_test);
     } else {
 
@@ -165,7 +168,26 @@ function sendDataToFlask(text) {
     .then(response => response.json())
     .then((data)=> {
         console.log(data);
+        return data;
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
 
+function processDataInFlask(text) {
+    return fetch('/process_data', {
+        method: 'POST',
+        body: JSON.stringify({ text: text }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then((data)=> {
+        console.log(data);
+        // console.log(data.result);
+        // console.log(typeof(data.result));
+        // var resultObject = JSON.parse(data.result);
+        // console.log(resultObject.events);
         // Process events
         if (data.events && data.links && data.events.length === data.links.length) {
             data.events.forEach((event, index) => {
@@ -190,18 +212,6 @@ function sendDataToFlask(text) {
 
         return data;
     })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
-
-function processDataInFlask(text) {
-    return fetch('/process_data', {
-        method: 'POST',
-        body: JSON.stringify({ text: text }),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(response => response.json())
     .catch((error) => {
         console.error('Error:', error);
     });

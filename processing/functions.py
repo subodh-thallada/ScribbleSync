@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 IMAGE_PATH = 'test.jpeg'
 PDF_PATH = '/Users/wallacelee/Downloads/BME281L-4th.pdf'
-SERVICE_ACCOUNT_FILE = r'/Users/wallacelee/Coding/VisualStudioProjects/UofTHacksXI/processing/primal-result-412505-f1d04cf5ff45.json'
+SERVICE_ACCOUNT_FILE = r'C:\Users\miran\.vscode\UofTHacksXI\processing\primal-result-412505-f1d04cf5ff45.json'
 CALENDAR_ID = 'miranda.chen2004@gmail.com'
 
 client = vision.ImageAnnotatorClient()
