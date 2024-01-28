@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 350 350" xml:space="preserve">
+<g id="XMLID_104_">
+	<circle id="XMLID_105_" style="fill:#FFCD00;" cx="280" cy="75" r="70"/>
+	<circle id="XMLID_106_" style="fill:#FFDA44;" cx="70" cy="75" r="70"/>
+	<rect id="XMLID_39_" x="75" y="315" style="fill:#00D7DF;" width="200" height="30"/>
+	<circle id="XMLID_107_" style="fill:#00D7DF;" cx="175" cy="175" r="150"/>
+	<rect id="XMLID_108_" x="175" y="315" style="fill:#00B6BD;" width="100" height="30"/>
+	<path id="XMLID_109_" style="fill:#00B6BD;" d="M175,25v137.4l52.733-52.733l24.546,24.546L175,211.493V325
+		c82.843,0,150-67.157,150-150S257.843,25,175,25z"/>
+	<circle id="XMLID_110_" style="fill:#FFEB99;" cx="175" cy="175" r="120"/>
+	<path id="XMLID_138_" style="fill:#FFE477;" d="M175,55v240c66.274,0,120-53.726,120-120S241.274,55,175,55z"/>
+	<g id="XMLID_169_">
+		<polygon id="XMLID_197_" style="fill:#00D7DF;" points="174.549,211.944 105,142.395 129.546,117.849 174.549,162.851 
+			227.733,109.667 252.279,134.214 		"/>
+	</g>
+	<polygon id="XMLID_221_" style="fill:#00969B;" points="175,211.493 252.279,134.214 227.733,109.667 175,162.4 	"/>
+</g>
+</svg>
