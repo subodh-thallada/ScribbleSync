@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 IMAGE_PATH = 'test.jpeg'
 PDF_PATH = '/Users/wallacelee/Downloads/BME281L-4th.pdf'
-SERVICE_ACCOUNT_FILE = r'/Users/wallacelee/Coding/VisualStudioProjects/UofTHacksXI/processing/primal-result-412505-f1d04cf5ff45.json'
+SERVICE_ACCOUNT_FILE = './primal-result-412505-f1d04cf5ff45.json'
 CALENDAR_ID = 'miranda.chen2004@gmail.com'
 
 client = vision.ImageAnnotatorClient()
@@ -97,7 +97,7 @@ def json_create(text):
     temperature = 0.5
 
     response = co.generate(
-        model='c0051a81-e115-43cb-ba79-41611666f5cb-ft',
+        model='c0051a81-e115-43cb-ba79-41611666f5cb-ft',    # Finetuned model 1 for extracting notes and events
         prompt=prompt,
         temperature=temperature,
     )
@@ -138,6 +138,7 @@ def grab_time(json_content):
     max_token = 200
 
     response = co.generate(
+        model="2bce82c2-7a18-4fcb-a6b3-dca56d4632c2-ft",    # Finetuned model 2 for extracting time
         prompt=prompt,
         temperature=temperature,
         # max_tokens=max_token,
@@ -195,6 +196,7 @@ def make_event(events, time_list):
         print('Event created: %s' % (google_event.get('htmlLink')))
         links.append(google_event.get('htmlLink'))
     return links
+
 
 # Debug Testing
 # make_event(["meeting at 3PM with Chris today", "submit pull request tomorrow by 2PM"], ["2024-01-27T15:00:00", "2024-01-28T14:00:00"])
