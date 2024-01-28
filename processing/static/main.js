@@ -162,10 +162,6 @@ function sendDataToFlask(text) {
     .then((data)=> {
         console.log(data);
 
-        // Clear existing content
-        document.querySelector('.events').innerHTML = 'Events';
-        document.querySelector('.notes').innerHTML = 'Notes';
-
         // Process events
         if (data.events && data.links && data.events.length === data.links.length) {
             data.events.forEach((event, index) => {
