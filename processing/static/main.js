@@ -145,7 +145,11 @@ saveBtn.addEventListener("click", () => {
         }
         sketch_counter += 1;
 
-        sendDataToFlask({ type: 'text', data: sketch_name });
+        sendDataToFlask({ type: 'text', data: sketch_name })
+        .then(() => {
+                return processDataInFlask({ type: 'text', data: sketch_name });
+            }
+        );
     }
     canvas.classList.add('canvas-flip');
     clearBtn.click();
@@ -191,3 +195,14 @@ function sendDataToFlask(text) {
     });
 }
 
+function processDataInFlask(text) {
+    return fetch('/process_data', {
+        method: 'POST',
+        body: JSON.stringify({ text: text }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
