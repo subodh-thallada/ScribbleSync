@@ -43,6 +43,14 @@ body {
     left: 5%;
 }
 
+#drawer{
+    position: absolute;
+    width: 12%;
+    height: 25%;
+    top: 30%;
+    left: 80%;
+}
+
 .draw_container{
     display: flex;
     flex-direction: column;
