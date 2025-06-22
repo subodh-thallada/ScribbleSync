@@ -16,7 +16,7 @@ SERVICE_ACCOUNT_FILE = './primal-result-412505-f1d04cf5ff45.json'
 CALENDAR_ID = 'miranda.chen2004@gmail.com'
 
 client = vision.ImageAnnotatorClient()
-co = cohere.Client('Nvm515TZTewfVajVKjTIqwHWpBjyJpWcI5b8DTXF')
+co = cohere.Client('')
 
 
 credentials = service_account.Credentials.from_service_account_file(
